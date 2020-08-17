@@ -1,0 +1,13 @@
+= simple_form_for([:account, news]) do |f|
+  .form-inputs
+    .row
+      = f.input :title, wrapper_html: { class: 'col-12 col-md-6' }
+    .row
+      = f.input :short_description, wrapper_html: { class: 'col-12 col-md-6' }
+    .row
+      = f.input :description, wrapper_html: { class: 'col-12 col-md-6' }
+
+  .form-actions
+    = f.button :submit, 'Save', class: 'btn btn-primary'
+    = link_to 'Cancel', account_news_path, class: 'btn btn-dark ml-3'
+

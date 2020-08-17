@@ -1,0 +1,10 @@
+doctype html
+html
+  head
+    title Windows Store
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'account', media: 'all'
+    = javascript_pack_tag 'application'
+  body
+    = yield

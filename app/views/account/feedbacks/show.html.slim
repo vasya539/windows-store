@@ -1,0 +1,19 @@
+section.py-5
+  .container
+    nav.mb-4
+      = link_to 'Edit', edit_account_feedback_path(@feedback), class: 'btn btn-primary mr-2'
+      = link_to 'Back', account_feedbacks_path, class: 'btn btn-primary'
+
+    table.table
+      thead
+        tr
+          th User Full Name
+          th User Email
+          th City
+          th Feedback
+      tbody
+        tr
+          th= @feedback.user_full_name
+          th= @feedback.user_email
+          th= @feedback.city
+          th= @feedback.feedback

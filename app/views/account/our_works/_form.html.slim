@@ -1,0 +1,11 @@
+= simple_form_for([:account, our_work]) do |f|
+  .form-inputs
+    .row
+      = f.input :title, wrapper_html: { class: 'col-12 col-md-6' }
+    .row
+      = f.input :description, wrapper_html: { class: 'col-12 col-md-6' }
+
+  .form-actions
+    = f.button :submit, 'Save', class: 'btn btn-primary'
+    = link_to 'Cancel', account_our_works_path, class: 'btn btn-dark ml-3'
+

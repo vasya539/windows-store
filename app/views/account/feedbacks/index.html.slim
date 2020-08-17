@@ -1,0 +1,44 @@
+section.feedbacks
+  .d-flex.justify-content-between.align-items-end.my-3
+    / = search_form_for(@q, url: account_vacancies_path, method: :get) do |f|
+    /   .form-inputs.d-flex.align-items-end
+    /     .form-group.my-0.mx-3
+    /       = f.label :position_i_cont, 'Position'
+    /       = f.search_field :position_i_cont, class: 'form-control'
+
+    /     .form-group.my-0.mx-3
+    /       = f.label :rank_eq, 'Rank'
+    /       = f.select :rank_eq, options_for_select( \
+    /           Vacancy::RANKS.map {|rank| [t("ranks.#{rank}"), rank] }.to_h),
+    /           {include_blank: 'All'},
+    /           {class: 'form-control'}
+
+    /     .form-group.my-0.mx-3
+    /       = f.label :project_id_eq, 'Project'
+    /       = f.select :project_id_eq, options_from_collection_for_select(\
+    /           Project.by_title.joins(:vacancies).distinct, :id, :title, @q.project_id_eq),
+    /           {include_blank: 'All'},
+    /           {class: 'form-control'}
+
+    /     .form-actions.mx-3= f.submit 'Filter', class: 'btn btn-primary px-4'
+  table.table.mt-2
+    thead.thead-light
+      tr
+        th User Full Name
+        th User Email
+        th City
+        th Feedback
+        th
+    tbody
+      - @feedbacks.all.each do |feedback|
+        tr
+          th= feedback.user_full_name
+          th= feedback.user_email
+          th= feedback.city
+          th= feedback.feedback
+          td.text-right
+            = link_to icon('fas', 'eye'), account_feedback_path(feedback), class: 'mr-2 text-dark'
+            = link_to icon('fas', 'trash'), account_feedback_path(feedback), data: { confirm: 'Are you sure?' }, method: :delete, class: 'text-dark'
+
+  .d-flex.mt-4.justify-content-center
+    = paginate @feedbacks
